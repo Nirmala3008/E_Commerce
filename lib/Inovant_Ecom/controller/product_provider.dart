@@ -1,7 +1,7 @@
-import 'package:e_comm_app/Inovant_Ecom/prod_model.dart';
+import 'package:e_comm_app/Inovant_Ecom/model/product_model.dart';
 import 'package:flutter/material.dart';
 
-class ProductProvider1 with ChangeNotifier {
+class ProductProvider with ChangeNotifier {
   Product2? _product;
   String? _selectedColor;
   int _quantity = 1;

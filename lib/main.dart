@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'Inovant_Ecom/prod_provider.dart';
-import 'Inovant_Ecom/product_page.dart';
+import 'Inovant_Ecom/controller/product_provider.dart';
+import 'Inovant_Ecom/view/product_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,10 +16,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => ProductProvider1()),
+          ChangeNotifierProvider(create: (_) => ProductProvider()),
         ],
         child:
         MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'E-Commerce App',
           theme: ThemeData(
             primarySwatch: Colors.blue,

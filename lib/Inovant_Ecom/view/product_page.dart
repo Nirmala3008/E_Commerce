@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_comm_app/Inovant_Ecom/prod_model.dart';
-import 'package:e_comm_app/Inovant_Ecom/prod_provider.dart';
+import 'package:e_comm_app/Inovant_Ecom/model/product_model.dart';
+import 'package:e_comm_app/Inovant_Ecom/controller/product_provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -74,7 +74,7 @@ class _ProductPageDetailsState extends State<ProductPageDetails> {
                 quantity: quantity,
               );
 
-              Provider.of<ProductProvider1>(context, listen: false).setProduct(product);
+              Provider.of<ProductProvider>(context, listen: false).setProduct(product);
             }
           }
         }
@@ -93,11 +93,19 @@ class _ProductPageDetailsState extends State<ProductPageDetails> {
 
     final double imageWidth = screenWidth * 1.0;
     final double imageHeight = screenHeight * 0.45;
-    return Consumer<ProductProvider1>(
+    return Consumer<ProductProvider>(
       builder: (context, productProvider, child) {
         final product = productProvider.product;
+
         if (product == null) {
-          return const Center(child: CircularProgressIndicator());
+          // 🔹 Show loader with Scaffold instead of black screen
+          return Scaffold(
+            backgroundColor: Colors.white,
+
+            body: const Center(
+              child: CircularProgressIndicator(color:Colors.blue),
+            ),
+          );
         }
        return  Scaffold(
          backgroundColor: Colors.white,
